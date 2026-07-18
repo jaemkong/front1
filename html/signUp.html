@@ -1,96 +1,378 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>회원가입</title>
 
     <!-- 공통 CSS 연결 -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
-    <div class="container">
-        <form action="signUpResult.html" method="get">
-            <h1>회원가입하기</h1>
-            <p class="required-guide">
-                <span class="required">*</span> 표시는 필수 입력 항목입니다.
-            </p>
-            <fieldset>
-                <legend>계정 정보</legend>
-                <p>
-                    <label for="userId">아이디 <span class="required">* </span>:</label>
-                    <input type="text" id="userId" name="userId" minlength="4" maxlength="15" required
-                        placeholder="4~15자 영문/숫자">
+<body class="signup-page">
 
+    <main class="signup-container">
+
+        <!-- 메인페이지로 돌아가기 -->
+        <a href="index.html" class="back-home">
+            ← 메인페이지로 돌아가기
+        </a>
+
+        <!-- ======================================
+             회원가입 페이지 상단
+        ======================================= -->
+        <header class="signup-header">
+
+            <div class="signup-header-text">
+
+                <p class="signup-kicker">
+                    JOIN MY UNIVERSE
                 </p>
 
-                <p>
-                    <label for="userPw">비밀번호 <span class="required">* </span>:</label>
-                    <input type="password" id="userPw" name="userPw" minlength="8" required placeholder="8자 이상 입력">
+                <h1>
+                    💌 회원가입
+                </h1>
 
+                <p class="signup-description">
+                    간단한 정보를 입력하고 재은이의 유니버스에 함께해 주세요.
                 </p>
 
+            </div>
+
+            <div class="signup-header-icon">
+                📝
+            </div>
+
+        </header>
+
+        <!-- ======================================
+             회원가입 폼
+        ======================================= -->
+        <form action="signUpResult.html" method="get" class="signup-form">
+
+            <!-- 필수 입력 안내 -->
+            <div class="signup-required-guide">
+
                 <p>
-                    <label for="userEmail">이메일 <span class="required">* </span>: </label>
-                    <input type="text" id="userEmail" name="userEmail" required placeholder="example">
-                    @
-                    <select name="emailDomain">
-                        <option value="direct">직접 입력</option>
-                        <option value="naver.com">naver.com</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="daum.net">daum.net</option>
-                    </select>
+                    <span class="required">*</span>
+                    표시는 필수 입력 항목입니다.
                 </p>
+
+            </div>
+
+            <!-- ==================================
+                 계정 정보
+            =================================== -->
+            <fieldset class="signup-fieldset">
+
+                <legend>
+                    <span>🔐</span>
+                    계정 정보
+                </legend>
+
+                <p class="fieldset-description">
+                    로그인할 때 사용할 아이디와 비밀번호를 입력해 주세요.
+                </p>
+
+                <div class="signup-field-grid">
+
+                    <!-- 아이디 -->
+                    <div class="signup-field">
+
+                        <label for="userId">
+                            아이디
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="text" id="userId" name="userId" minlength="4" maxlength="15"
+                            placeholder="4~15자 영문 또는 숫자" required>
+
+                        <small>
+                            영문과 숫자를 사용해 4자 이상 입력해 주세요.
+                        </small>
+
+                    </div>
+
+                    <!-- 비밀번호 -->
+                    <div class="signup-field">
+
+                        <label for="userPw">
+                            비밀번호
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="password" id="userPw" name="userPw" minlength="8" placeholder="8자 이상 입력" required>
+
+                        <small>
+                            안전한 비밀번호를 8자 이상 입력해 주세요.
+                        </small>
+
+                    </div>
+
+                    <!-- 이메일 -->
+                    <div class="signup-field signup-field-full">
+
+                        <label for="userEmail">
+                            이메일
+                            <span class="required">*</span>
+                        </label>
+
+                        <div class="email-input-group">
+
+                            <input type="text" id="userEmail" name="userEmail" placeholder="이메일 아이디" required>
+
+                            <span class="email-symbol">
+                                @
+                            </span>
+
+                            <select id="emailDomain" name="emailDomain" aria-label="이메일 도메인 선택" required>
+                                <option value="" selected disabled>
+                                    이메일 선택
+                                </option>
+
+                                <option value="naver.com">
+                                    naver.com
+                                </option>
+
+                                <option value="gmail.com">
+                                    gmail.com
+                                </option>
+
+                                <option value="daum.net">
+                                    daum.net
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                </div>
+
             </fieldset>
 
+            <!-- ==================================
+                 개인 프로필 정보
+            =================================== -->
+            <fieldset class="signup-fieldset">
 
-            <fieldset>
-                <legend>개인 프로필 정보</legend>
-                <p>
-                    <label for="userName">이름 <span class="required">* </span>: </label>
-                    <input type="text" id="userName" name="userName" required>
+                <legend>
+                    <span>🙋🏻‍♀️</span>
+                    개인 프로필 정보
+                </legend>
+
+                <p class="fieldset-description">
+                    나를 소개할 수 있는 기본 정보를 입력해 주세요.
                 </p>
 
-                <p>
-                    <label for="userBirth">생년월일 <span class="required">* </span>: </label>
-                    <input type="date" id="userBirth" name="userBirth" required>
-                </p>
+                <div class="signup-field-grid">
 
+                    <!-- 이름 -->
+                    <div class="signup-field">
 
-                <p>
-                    성별 <span class="required">* </span>:
-                    <label><input type="radio" name="gender" value="male" checked> 남성</label>
-                    <label><input type="radio" name="gender" value="female"> 여성</label>
-                    <label><input type="radio" name="gender" value="none"> 선택안함</label>
-                </p>
+                        <label for="userName">
+                            이름
+                            <span class="required">*</span>
+                        </label>
 
+                        <input type="text" id="userName" name="userName" placeholder="이름을 입력해 주세요" required>
 
-                <p>
-                    관심 분야 (중복 선택 가능): <br>
-                    <label><input type="checkbox" name="interest" value="frontend"> 웹 프론트엔드 (Vue.js/HTML)</label><br>
-                    <label><input type="checkbox" name="interest" value="uiux"> UI/UX 디자인 표준</label><br>
-                    <label><input type="checkbox" name="interest" value="backend"> 백엔드 & 데이터베이스</label><br>
-                    <label><input type="checkbox" name="interest" value="devops"> 클라우드 & 인프라</label>
-                </p>
+                    </div>
+
+                    <!-- 생년월일 -->
+                    <div class="signup-field">
+
+                        <label for="userBirth">
+                            생년월일
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="date" id="userBirth" name="userBirth" required>
+
+                    </div>
+
+                    <!-- 성별 -->
+                    <div class="signup-field signup-field-full">
+
+                        <p class="signup-field-label">
+                            성별
+                            <span class="required">*</span>
+                        </p>
+
+                        <div class="signup-choice-grid gender-choice-grid">
+
+                            <label class="signup-choice-card">
+
+                                <input type="radio" name="gender" value="male" checked>
+
+                                <span class="choice-icon">
+                                    🙋🏻‍♂️
+                                </span>
+
+                                <span>남성</span>
+
+                            </label>
+
+                            <label class="signup-choice-card">
+
+                                <input type="radio" name="gender" value="female">
+
+                                <span class="choice-icon">
+                                    🙋🏻‍♀️
+                                </span>
+
+                                <span>여성</span>
+
+                            </label>
+
+                            <label class="signup-choice-card">
+
+                                <input type="radio" name="gender" value="none">
+
+                                <span class="choice-icon">
+                                    🙂‍↔️
+                                </span>
+
+                                <span>선택 안 함</span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <!-- 관심 분야 -->
+                    <div class="signup-field signup-field-full">
+
+                        <p class="signup-field-label">
+                            관심 분야
+                        </p>
+
+                        <p class="signup-field-hint">
+                            관심 있는 분야를 중복으로 선택할 수 있어요.
+                        </p>
+
+                        <div class="signup-choice-grid interest-choice-grid">
+
+                            <label class="signup-choice-card">
+
+                                <input type="checkbox" name="interest" value="frontend">
+
+                                <span class="choice-icon">
+                                    🖥️
+                                </span>
+
+                                <span>
+                                    웹 프론트엔드
+                                    <small>Vue.js · HTML</small>
+                                </span>
+
+                            </label>
+
+                            <label class="signup-choice-card">
+
+                                <input type="checkbox" name="interest" value="uiux">
+
+                                <span class="choice-icon">
+                                    🎨
+                                </span>
+
+                                <span>
+                                    UI/UX 디자인
+                                    <small>사용자 경험 · 디자인 표준</small>
+                                </span>
+
+                            </label>
+
+                            <label class="signup-choice-card">
+
+                                <input type="checkbox" name="interest" value="backend">
+
+                                <span class="choice-icon">
+                                    🗄️
+                                </span>
+
+                                <span>
+                                    백엔드
+                                    <small>서버 · 데이터베이스</small>
+                                </span>
+
+                            </label>
+
+                            <label class="signup-choice-card">
+
+                                <input type="checkbox" name="interest" value="devops">
+
+                                <span class="choice-icon">
+                                    ☁️
+                                </span>
+
+                                <span>
+                                    클라우드
+                                    <small>인프라 · DevOps</small>
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </fieldset>
 
+            <!-- ==================================
+                 자기소개
+            =================================== -->
+            <fieldset class="signup-fieldset">
 
+                <legend>
+                    <span>💬</span>
+                    자기소개
+                </legend>
 
-            <fieldset>
-                <legend>자기소개</legend>
-                <p>
-                    <label for="intro">나를 표현하는 한 줄 소개 또는 가입 인사:</label><br>
-                    <textarea id="intro" name="intro" rows="5" cols="50"
-                        placeholder="여기에 내용을 입력하세요 (최대 200자)"></textarea>
+                <p class="fieldset-description">
+                    나를 표현하는 짧은 소개나 가입 인사를 작성해 주세요.
                 </p>
+
+                <div class="signup-field">
+
+                    <label for="intro">
+                        한 줄 소개 또는 가입 인사
+                    </label>
+
+                    <textarea id="intro" name="intro" rows="6" maxlength="200"
+                        placeholder="여기에 내용을 입력해 주세요. 최대 200자까지 작성할 수 있어요."></textarea>
+
+                    <small>
+                        최대 200자
+                    </small>
+
+                </div>
+
             </fieldset>
-            <br>
-            <input type="submit" value="동의하고 회원가입">
-            <input type="reset" value="다시 작성">
+
+            <!-- ==================================
+                 제출 버튼
+            =================================== -->
+            <div class="signup-button-group">
+
+                <button type="reset" class="signup-button signup-reset-button">
+                    ↻ 다시 작성
+                </button>
+
+                <button type="submit" class="signup-button signup-submit-button">
+                    동의하고 회원가입 →
+                </button>
+
+            </div>
+
         </form>
-    </div>
+
+    </main>
 
 </body>
 

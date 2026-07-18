@@ -86,40 +86,875 @@ aside {
 }
 
 
-/* =========================
-   여행 카드
-========================= */
+/* ==================================================
+   6. 나의 여행 기록 페이지
+================================================== */
 
-.trip-grid {
+/* ----------------------------------------
+   여행 페이지 전체
+---------------------------------------- */
+
+.trip-page {
+    min-height: 100vh;
+    margin: 0;
+
+    color: #4f4658;
+
+    background:
+        radial-gradient(circle at 8% 8%,
+            rgba(249, 217, 229, 0.52),
+            transparent 25%),
+        radial-gradient(circle at 92% 16%,
+            rgba(220, 232, 249, 0.5),
+            transparent 26%),
+        #faf7f2;
+
+    font-family:
+        "Pretendard",
+        "Apple SD Gothic Neo",
+        sans-serif;
+}
+
+
+/* 여행 페이지 전체 너비 */
+.trip-container {
+    width: min(1400px, calc(100% - 48px));
+
+    margin: 0 auto;
+    padding: 24px 0 45px;
+}
+
+
+/* ----------------------------------------
+   여행 페이지 상단
+---------------------------------------- */
+
+.trip-header {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding: 28px 32px;
+
+    border: 1px solid rgba(128, 100, 181, 0.13);
+    border-radius: 24px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(238, 231, 251, 0.82));
+
+    box-shadow:
+        0 18px 38px rgba(73, 55, 91, 0.11);
+}
+
+
+/* 왼쪽 아래 분홍색 장식 */
+.trip-header::before {
+    position: absolute;
+    bottom: -50px;
+    left: -35px;
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    background-color: rgba(249, 217, 229, 0.48);
+
+    content: "";
+}
+
+
+/* 오른쪽 위 하늘색 장식 */
+.trip-header::after {
+    position: absolute;
+    top: -50px;
+    right: 95px;
+
+    width: 115px;
+    height: 115px;
+
+    border-radius: 50%;
+
+    background-color: rgba(220, 232, 249, 0.5);
+
+    content: "";
+}
+
+
+.trip-header-text {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* 영어 소제목 */
+.trip-kicker {
+    margin: 0 0 6px;
+
+    color: #8064b5;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+
+/* 페이지 가장 큰 제목 */
+.trip-header h1 {
+    margin: 0;
+    padding: 0;
+
+    border: none;
+
+    color: #453b50;
+    background: none;
+    box-shadow: none;
+
+    font-size: clamp(30px, 4vw, 42px);
+    line-height: 1.2;
+}
+
+
+/* 상단 설명 */
+.trip-description {
+    max-width: 720px;
+
+    margin: 11px 0 0;
+
+    color: #756b7f;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* 오른쪽 여행 가방 아이콘 */
+.trip-header-icon {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+
+    width: 84px;
+    height: 84px;
+
+    border: 1px solid rgba(128, 100, 181, 0.15);
+    border-radius: 24px;
+
+    background-color: rgba(255, 255, 255, 0.78);
+
+    box-shadow:
+        0 14px 28px rgba(98, 73, 126, 0.12);
+
+    font-size: 40px;
+
+    animation: subpage-icon-float 3.2s ease-in-out infinite;
+}
+
+
+/* ----------------------------------------
+   여행 페이지 요약 카드
+---------------------------------------- */
+
+.trip-summary {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
+    gap: 12px;
 
-.trip-card {
-    background-color: #ffffff;
-    border: 2px solid #e3b2ed;
-    padding: 16px;
-    margin: 0;
-    border-radius: 8px;
-
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 15px 0;
 }
 
 
-.trip-card img {
-    display: block;
+.trip-summary-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    min-width: 0;
+    padding: 14px 16px;
+
+    border: 1px solid rgba(128, 100, 181, 0.12);
+    border-radius: 16px;
+
+    background-color: rgba(255, 255, 255, 0.88);
+
+    box-shadow:
+        0 9px 21px rgba(73, 55, 91, 0.07);
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+}
+
+
+.trip-summary-item:hover {
+    box-shadow:
+        0 13px 26px rgba(73, 55, 91, 0.12);
+
+    transform: translateY(-3px);
+}
+
+
+.trip-summary-icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 13px;
+
+    background-color: #eee7fb;
+
+    font-size: 19px;
+}
+
+
+.trip-summary-item strong {
+    color: #504559;
+
+    font-size: 15px;
+}
+
+
+.trip-summary-item p {
+    margin: 3px 0 0;
+
+    color: #817689;
+
+    font-size: 12px;
+}
+
+
+/* ----------------------------------------
+   개별 여행 기록
+---------------------------------------- */
+
+.travel-entry {
     width: 100%;
-    height: 180px;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border-radius: 6px;
+    padding: 24px;
+
+    border: 1px solid rgba(128, 100, 181, 0.13);
+    border-radius: 24px;
+
+    background-color: rgba(255, 255, 255, 0.93);
+
+    box-shadow:
+        0 18px 38px rgba(73, 55, 91, 0.1);
+
+    box-sizing: border-box;
 }
 
-.trip-card span {
-    display: block;
+
+.travel-entry-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
 }
+
+
+/* 캐나다 여행 제목 */
+.travel-entry-heading h2 {
+    position: relative;
+
+    display: inline-block;
+
+    margin: 0;
+    padding: 4px 0 5px 15px;
+
+    border: none;
+
+    color: #4c4255;
+    background: none;
+    box-shadow: none;
+
+    font-size: 28px;
+    line-height: 1.3;
+}
+
+
+/* 제목 왼쪽 보라색 선 */
+.travel-entry-heading h2::before {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 0;
+
+    width: 5px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(180deg,
+            #8064b5,
+            #b69bdc);
+
+    content: "";
+}
+
+
+/* 제목 아래 연보라색 밑줄 */
+.travel-entry-heading h2::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 15px;
+
+    height: 5px;
+
+    border-radius: 999px;
+
+    background-color: rgba(182, 155, 220, 0.28);
+
+    content: "";
+}
+
+
+/* 첫 번째 여행 스티커 */
+.trip-sticker {
+    display: inline-block;
+    flex-shrink: 0;
+
+    padding: 7px 12px;
+
+    border: 1px dashed rgba(128, 100, 181, 0.4);
+    border-radius: 10px;
+
+    color: #8064b5;
+    background-color: #fff8cc;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    transform: rotate(3deg);
+}
+
+
+.travel-entry-description {
+    margin: 10px 0 18px;
+
+    color: #897e91;
+
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+
+/* ----------------------------------------
+   여행 음악
+---------------------------------------- */
+
+.trip-audio-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    margin-bottom: 22px;
+    padding: 16px 18px;
+
+    border: 1px solid rgba(128, 100, 181, 0.14);
+    border-radius: 17px;
+
+    background:
+        linear-gradient(145deg,
+            #f8f4ff,
+            #edf3fc);
+}
+
+
+.trip-media-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.trip-media-icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 14px;
+
+    background-color: rgba(255, 255, 255, 0.8);
+
+    font-size: 21px;
+}
+
+
+.trip-media-heading strong {
+    color: #584b65;
+
+    font-size: 15px;
+}
+
+
+.trip-media-heading p {
+    margin: 3px 0 0;
+
+    color: #817689;
+
+    font-size: 12px;
+}
+
+
+.trip-audio-card audio {
+    width: min(430px, 48%);
+    height: 42px;
+}
+
+
+/* ----------------------------------------
+   사진·영상 공통 소제목
+---------------------------------------- */
+
+.trip-sub-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+
+    margin-bottom: 13px;
+}
+
+
+.trip-sub-heading h3 {
+    display: block;
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+
+    color: #504559;
+
+    font-size: 22px;
+}
+
+
+.trip-sub-heading>p {
+    margin: 0;
+
+    color: #897e91;
+
+    font-size: 12px;
+}
+
+
+/* ----------------------------------------
+   여행 사진
+---------------------------------------- */
+
+.trip-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+
+.travel-photo-card {
+    overflow: hidden;
+
+    min-width: 0;
+    margin: 0;
+
+    border: 1px solid rgba(128, 100, 181, 0.14);
+    border-radius: 20px;
+
+    background-color: #ffffff;
+
+    box-shadow:
+        0 11px 25px rgba(73, 55, 91, 0.1);
+
+    cursor: zoom-in;
+
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+
+.travel-photo-card:hover {
+    box-shadow:
+        0 18px 34px rgba(73, 55, 91, 0.16);
+
+    transform: translateY(-6px);
+}
+
+
+.travel-photo-wrap {
+    position: relative;
+    overflow: hidden;
+
+    aspect-ratio: 4 / 3;
+}
+
+
+.travel-photo-wrap img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.45s;
+}
+
+
+.travel-photo-card:hover img {
+    transform: scale(1.04);
+}
+
+
+/* 사진 오른쪽 위 여행지 이름 */
+.travel-location {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    padding: 6px 9px;
+
+    border-radius: 999px;
+
+    color: #59486e;
+    background-color: rgba(255, 255, 255, 0.86);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    backdrop-filter: blur(6px);
+}
+
+
+/* 사진 아래 설명 */
+.travel-photo-card figcaption {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    min-height: 100px;
+    padding: 16px;
+}
+
+
+.travel-photo-icon {
+    flex-shrink: 0;
+
+    font-size: 20px;
+}
+
+
+.travel-photo-card strong {
+    color: #504559;
+
+    font-size: 16px;
+}
+
+
+.travel-photo-card p {
+    margin: 5px 0 0;
+
+    color: #7c7183;
+
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+
+/* ----------------------------------------
+   여행 영상
+---------------------------------------- */
+
+.trip-video-section {
+    margin-top: 24px;
+    padding: 21px;
+
+    border: 1px solid rgba(128, 100, 181, 0.13);
+    border-radius: 20px;
+
+    background:
+        linear-gradient(145deg,
+            #faf7ff,
+            #f3edf9);
+}
+
+
+.trip-video-badge {
+    padding: 7px 11px;
+
+    border-radius: 999px;
+
+    color: #ffffff;
+    background-color: #8064b5;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+.trip-video-description {
+    margin: 0 0 15px;
+
+    color: #897e91;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+.trip-video-frame {
+    overflow: hidden;
+
+    width: min(900px, 100%);
+    margin: 0 auto;
+
+    border: 8px solid #ffffff;
+    border-radius: 20px;
+
+    background-color: #222222;
+
+    box-shadow:
+        0 15px 34px rgba(73, 55, 91, 0.16);
+}
+
+
+.trip-video-frame video {
+    display: block;
+
+    width: 100%;
+    max-height: 560px;
+
+    background-color: #000000;
+}
+
+/* 영상 아래 짧은 설명 */
+.trip-video-caption {
+    margin: 13px 0 0;
+
+    color: #6f6179;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+/* ----------------------------------------
+   여행 기록 마무리
+---------------------------------------- */
+
+.trip-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 18px;
+    padding: 15px;
+
+    border: 1px dashed rgba(128, 100, 181, 0.25);
+    border-radius: 16px;
+
+    background-color: #f8f4ff;
+}
+
+
+.trip-message-icon {
+    flex-shrink: 0;
+
+    font-size: 25px;
+}
+
+
+.trip-message strong {
+    color: #625079;
+
+    font-size: 14px;
+}
+
+
+.trip-message p {
+    margin: 3px 0 0;
+
+    color: #897e91;
+
+    font-size: 12px;
+}
+
+
+/* ==================================================
+   여행 사진 기본 뷰어
+
+   브라우저의 dialog 요소를 사용하므로
+   복잡한 모달 카드 디자인은 적용하지 않습니다.
+================================================== */
+
+.photo-viewer {
+    position: relative;
+
+    max-width: 94vw;
+    max-height: 92vh;
+
+    margin: auto;
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+}
+
+
+/* dialog 뒤쪽의 어두운 배경 */
+.photo-viewer::backdrop {
+    background-color: rgba(0, 0, 0, 0.82);
+}
+
+
+/* 크게 표시되는 사진 */
+.photo-viewer img {
+    display: block;
+
+    max-width: 92vw;
+    max-height: 88vh;
+
+    border-radius: 3px;
+
+    object-fit: contain;
+}
+
+
+/* 사진 오른쪽 위 닫기 버튼 */
+.photo-viewer-close {
+    position: fixed;
+    top: 18px;
+    right: 24px;
+
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    border: none;
+
+    color: #ffffff;
+    background: transparent;
+
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+/* ----------------------------------------
+   여행 페이지 반응형
+---------------------------------------- */
+
+@media screen and (max-width: 786px) {
+
+    .trip-container {
+        width: calc(100% - 20px);
+
+        padding: 18px 0 35px;
+    }
+
+
+    .trip-header {
+        gap: 14px;
+
+        padding: 21px;
+    }
+
+
+    .trip-header h1 {
+        font-size: clamp(25px, 6vw, 32px);
+    }
+
+
+    .trip-header-icon {
+        width: 65px;
+        height: 65px;
+
+        border-radius: 19px;
+
+        font-size: 30px;
+    }
+
+
+    .trip-summary {
+        gap: 8px;
+    }
+
+
+    .trip-summary-item {
+        padding: 10px;
+    }
+
+
+    .travel-entry {
+        padding: 16px 12px;
+    }
+
+
+    .travel-entry-heading h2 {
+        font-size: 22px;
+    }
+
+
+    .trip-photo-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .trip-audio-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .trip-audio-card audio {
+        width: 100%;
+    }
+
+
+    .travel-photo-wrap {
+        aspect-ratio: 16 / 9;
+    }
+
+
+    .trip-sub-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+
+    .photo-viewer-close {
+        top: 10px;
+        right: 13px;
+
+        font-size: 35px;
+    }
+
+}
+
+
 
 /* =========================
    시간표 테이블
@@ -153,141 +988,1033 @@ tbody tr:nth-child(even)>td:first-child {
 }
 
 
-/* =========================
-   회원가입
-========================= */
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 16px;
-    border: 1px solid #d8c6ef;
-    border-radius: 8px;
-    font-family: "Poor Story", cursive;
-    font-size: 16px;
+/* ==================================================
+   7. 회원가입 페이지
+================================================== */
+
+/* ----------------------------------------
+   회원가입 페이지 전체
+---------------------------------------- */
+
+.signup-page,
+.signup-result-page {
+    min-height: 100vh;
+    margin: 0;
+
+    color: #4f4658;
+
+    background:
+        radial-gradient(circle at 8% 8%,
+            rgba(249, 217, 229, 0.52),
+            transparent 25%),
+        radial-gradient(circle at 92% 16%,
+            rgba(220, 232, 249, 0.5),
+            transparent 26%),
+        #faf7f2;
+
+    font-family:
+        "Pretendard",
+        "Apple SD Gothic Neo",
+        sans-serif;
+}
+
+
+.signup-page *,
+.signup-result-page * {
     box-sizing: border-box;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
-    width: auto;
-    margin: 0 6px 0 0;
+
+/* 페이지 전체 너비 */
+.signup-container,
+.signup-result-container {
+    width: min(1200px, calc(100% - 48px));
+
+    margin: 0 auto;
+    padding: 24px 0 45px;
 }
+
+
+/* ----------------------------------------
+   회원가입 페이지 상단
+---------------------------------------- */
+
+.signup-header {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding: 30px 34px;
+
+    border: 1px solid rgba(128, 100, 181, 0.13);
+    border-radius: 26px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(238, 231, 251, 0.82));
+
+    box-shadow:
+        0 18px 38px rgba(73, 55, 91, 0.11);
+}
+
+
+/* 왼쪽 아래 장식 */
+.signup-header::before {
+    position: absolute;
+    bottom: -55px;
+    left: -35px;
+
+    width: 125px;
+    height: 125px;
+
+    border-radius: 50%;
+
+    background-color: rgba(249, 217, 229, 0.48);
+
+    content: "";
+}
+
+
+/* 오른쪽 위 장식 */
+.signup-header::after {
+    position: absolute;
+    top: -50px;
+    right: 95px;
+
+    width: 115px;
+    height: 115px;
+
+    border-radius: 50%;
+
+    background-color: rgba(220, 232, 249, 0.5);
+
+    content: "";
+}
+
+
+.signup-header-text {
+    position: relative;
+    z-index: 1;
+}
+
+
+.signup-kicker,
+.success-kicker,
+.result-kicker {
+    margin: 0 0 7px;
+
+    color: #8064b5;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+
+.signup-header h1 {
+    margin: 0;
+    padding: 0;
+
+    border: none;
+
+    color: #453b50;
+    background: none;
+    box-shadow: none;
+
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.2;
+}
+
+
+.signup-description {
+    max-width: 720px;
+
+    margin: 11px 0 0;
+
+    color: #756b7f;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+.signup-header-icon {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+
+    width: 84px;
+    height: 84px;
+
+    border: 1px solid rgba(128, 100, 181, 0.15);
+    border-radius: 24px;
+
+    background-color: rgba(255, 255, 255, 0.78);
+
+    box-shadow:
+        0 14px 28px rgba(98, 73, 126, 0.12);
+
+    font-size: 40px;
+
+    animation: subpage-icon-float 3.2s ease-in-out infinite;
+}
+
+
+/* ----------------------------------------
+   회원가입 폼
+---------------------------------------- */
+
+.signup-form {
+    margin-top: 16px;
+}
+
+
+.signup-required-guide {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 14px;
+    padding: 13px 16px;
+
+    border: 1px solid rgba(128, 100, 181, 0.12);
+    border-radius: 16px;
+
+    background-color: rgba(255, 255, 255, 0.88);
+
+    box-shadow:
+        0 8px 20px rgba(73, 55, 91, 0.06);
+}
+
+
+.signup-required-guide p {
+    margin: 0;
+
+    color: #756b7f;
+
+    font-size: 13px;
+}
+
+
+.signup-guide-icon {
+    font-size: 18px;
+}
+
 
 .required {
-    color: #d94f4f;
-    font-weight: bold;
-}
+    color: #df6076;
 
-.required {
-    color: #d94f4f;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 
-/* =========================
-   10. 반응형 웹 디자인
-========================= */
+/* ----------------------------------------
+   입력 항목 카드
+---------------------------------------- */
+
+.signup-fieldset {
+    min-width: 0;
+
+    margin: 0 0 18px;
+    padding: 25px;
+
+    border: 1px solid rgba(128, 100, 181, 0.13);
+    border-radius: 23px;
+
+    background-color: rgba(255, 255, 255, 0.93);
+
+    box-shadow:
+        0 16px 34px rgba(73, 55, 91, 0.09);
+}
+
+
+.signup-fieldset legend {
+    padding: 0 10px;
+
+    color: #584b65;
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+
+.signup-fieldset legend span {
+    margin-right: 5px;
+}
+
+
+.fieldset-description {
+    margin: 0 0 20px;
+
+    color: #897e91;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+.signup-field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+.signup-field {
+    min-width: 0;
+}
+
+
+.signup-field-full {
+    grid-column: 1 / -1;
+}
+
+
+.signup-field label,
+.signup-field-label {
+    display: block;
+
+    margin: 0 0 8px;
+
+    color: #574c60;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.signup-field-label {
+    padding: 0;
+}
+
+
+.signup-field-hint {
+    margin: -3px 0 12px;
+
+    color: #918696;
+
+    font-size: 12px;
+}
+
+
+/* ----------------------------------------
+   입력창 공통
+---------------------------------------- */
+
+.signup-page input[type="text"],
+.signup-page input[type="password"],
+.signup-page input[type="date"],
+.signup-page select,
+.signup-page textarea {
+    width: 100%;
+
+    margin: 0;
+    padding: 13px 14px;
+
+    border: 1px solid #ddd4e8;
+    border-radius: 13px;
+
+    color: #504559;
+    background-color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.22s,
+        box-shadow 0.22s,
+        background-color 0.22s;
+}
+
+
+.signup-page input::placeholder,
+.signup-page textarea::placeholder {
+    color: #aaa1af;
+}
+
+
+.signup-page input:focus,
+.signup-page select:focus,
+.signup-page textarea:focus {
+    border-color: #9172bd;
+
+    background-color: #fffefe;
+
+    box-shadow:
+        0 0 0 4px rgba(128, 100, 181, 0.12);
+}
+
+
+.signup-page textarea {
+    min-height: 145px;
+
+    line-height: 1.7;
+    resize: vertical;
+}
+
+
+.signup-field>small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #948a99;
+
+    font-size: 11px;
+}
+
+
+/* ----------------------------------------
+   이메일 입력
+---------------------------------------- */
+
+.email-input-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(170px, 0.65fr);
+    align-items: center;
+    gap: 10px;
+}
+
+
+.email-symbol {
+    color: #8064b5;
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+
+/* ----------------------------------------
+   라디오·체크박스 선택 카드
+---------------------------------------- */
+
+.signup-choice-grid {
+    display: grid;
+    gap: 12px;
+}
+
+
+.gender-choice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+
+.interest-choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+.signup-choice-card {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    min-width: 0;
+    margin: 0;
+    padding: 14px 15px;
+
+    border: 1px solid #e0d7e9;
+    border-radius: 15px;
+
+    color: #5b5063;
+    background-color: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.22s,
+        background-color 0.22s,
+        box-shadow 0.22s,
+        transform 0.22s;
+}
+
+
+.signup-choice-card:hover {
+    border-color: rgba(128, 100, 181, 0.5);
+
+    background-color: #fbf8ff;
+
+    box-shadow:
+        0 9px 20px rgba(73, 55, 91, 0.08);
+
+    transform: translateY(-2px);
+}
+
+
+.signup-choice-card input {
+    flex-shrink: 0;
+
+    width: 17px;
+    height: 17px;
+    margin: 0;
+
+    accent-color: #8064b5;
+}
+
+
+.choice-icon {
+    flex-shrink: 0;
+
+    font-size: 20px;
+}
+
+
+.signup-choice-card>span:last-child {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.signup-choice-card small {
+    margin-top: 3px;
+
+    color: #938899;
+
+    font-size: 11px;
+    font-weight: 400;
+}
+
+
+/* ----------------------------------------
+   가입·초기화 버튼
+---------------------------------------- */
+
+.signup-button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 4px;
+}
+
+
+.signup-button {
+    min-width: 170px;
+    padding: 14px 20px;
+
+    border: none;
+    border-radius: 14px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.22s,
+        box-shadow 0.22s,
+        transform 0.22s;
+}
+
+
+.signup-reset-button {
+    color: #62566b;
+    background-color: #eee8f5;
+}
+
+
+.signup-reset-button:hover {
+    background-color: #dfd4eb;
+
+    transform: translateY(-2px);
+}
+
+
+.signup-submit-button {
+    color: #ffffff;
+    background-color: #8064b5;
+
+    box-shadow:
+        0 10px 22px rgba(128, 100, 181, 0.25);
+}
+
+
+.signup-submit-button:hover {
+    background-color: #654c8b;
+
+    box-shadow:
+        0 14px 27px rgba(128, 100, 181, 0.32);
+
+    transform: translateY(-2px);
+}
+
+
+/* ==================================================
+   회원가입 완료 페이지
+================================================== */
+
+/* ----------------------------------------
+   가입 완료 상단 카드
+---------------------------------------- */
+
+.signup-success-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 48px 30px;
+
+    border: 1px solid rgba(128, 100, 181, 0.13);
+    border-radius: 28px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(238, 231, 251, 0.85));
+
+    box-shadow:
+        0 20px 42px rgba(73, 55, 91, 0.12);
+
+    text-align: center;
+}
+
+
+.success-decoration {
+    position: absolute;
+
+    font-size: 32px;
+}
+
+
+.success-decoration-left {
+    top: 25px;
+    left: 35px;
+
+    transform: rotate(-15deg);
+}
+
+
+.success-decoration-right {
+    right: 38px;
+    bottom: 30px;
+
+    transform: rotate(12deg);
+}
+
+
+.success-icon {
+    display: grid;
+    place-items: center;
+
+    width: 86px;
+    height: 86px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 26px;
+
+    background-color: rgba(255, 255, 255, 0.82);
+
+    box-shadow:
+        0 14px 28px rgba(98, 73, 126, 0.12);
+
+    font-size: 43px;
+}
+
+
+.signup-success-card h1 {
+    margin: 0;
+    padding: 0;
+
+    border: none;
+
+    color: #453b50;
+    background: none;
+    box-shadow: none;
+
+    font-size: clamp(31px, 4vw, 45px);
+}
+
+
+.success-description {
+    margin: 15px 0 0;
+
+    color: #756b7f;
+
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+.success-description strong {
+    color: #70558f;
+}
+
+
+.success-check {
+    display: inline-block;
+
+    margin-top: 20px;
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    color: #536e5b;
+    background-color: #e2f4e8;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* ----------------------------------------
+   가입 완료 하단 카드
+---------------------------------------- */
+
+.signup-result-card {
+    margin-top: 16px;
+    padding: 25px;
+
+    border: 1px solid rgba(128, 100, 181, 0.13);
+    border-radius: 23px;
+
+    background-color: rgba(255, 255, 255, 0.93);
+
+    box-shadow:
+        0 16px 34px rgba(73, 55, 91, 0.09);
+}
+
+
+.result-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    margin-bottom: 18px;
+}
+
+
+.result-section-heading h2 {
+    position: relative;
+
+    margin: 0;
+    padding: 3px 0 5px 14px;
+
+    border: none;
+
+    color: #504559;
+    background: none;
+    box-shadow: none;
+
+    font-size: 25px;
+}
+
+
+.result-section-heading h2::before {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 0;
+
+    width: 5px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(180deg,
+            #8064b5,
+            #b69bdc);
+
+    content: "";
+}
+
+
+.result-section-heading h2::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 14px;
+
+    height: 5px;
+
+    border-radius: 999px;
+
+    background-color: rgba(182, 155, 220, 0.28);
+
+    content: "";
+}
+
+
+.result-heading-icon {
+    font-size: 27px;
+}
+
+
+/* 안내 목록 */
+.signup-guide-list {
+    display: grid;
+    gap: 11px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.signup-guide-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+
+    padding: 15px;
+
+    border: 1px solid #e5ddec;
+    border-radius: 15px;
+
+    background-color: #fcfaff;
+}
+
+
+.signup-guide-list li>span {
+    flex-shrink: 0;
+
+    font-size: 21px;
+}
+
+
+.signup-guide-list strong {
+    color: #584c61;
+
+    font-size: 14px;
+}
+
+
+.signup-guide-list p {
+    margin: 4px 0 0;
+
+    color: #837887;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+.result-guide {
+    margin: -4px 0 15px;
+
+    color: #897e91;
+
+    font-size: 13px;
+}
+
+
+/* 다른 페이지 링크 */
+.signup-result-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+
+.signup-result-links a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 0;
+    padding: 15px;
+
+    border: 1px solid #e0d7e9;
+    border-radius: 16px;
+
+    color: #584d60;
+    background-color: #ffffff;
+
+    text-decoration: none;
+
+    transition:
+        border-color 0.22s,
+        box-shadow 0.22s,
+        transform 0.22s;
+}
+
+
+.signup-result-links a:hover {
+    border-color: rgba(128, 100, 181, 0.48);
+
+    box-shadow:
+        0 12px 24px rgba(73, 55, 91, 0.11);
+
+    text-decoration: none;
+
+    transform: translateY(-3px);
+}
+
+
+.result-link-icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 14px;
+
+    background-color: #eee7fb;
+
+    font-size: 20px;
+}
+
+
+.signup-result-links a>span:nth-child(2) {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+.signup-result-links strong {
+    font-size: 14px;
+}
+
+
+.signup-result-links small {
+    margin-top: 3px;
+
+    color: #918696;
+
+    font-size: 11px;
+}
+
+
+.result-link-arrow {
+    color: #8064b5;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    transition: transform 0.22s;
+}
+
+
+.signup-result-links a:hover .result-link-arrow {
+    transform: translateX(4px);
+}
+
+
+.signup-result-message {
+    margin: 17px 0 0;
+
+    color: #756b7f;
+
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+/* ==================================================
+   회원가입 페이지 반응형
+================================================== */
+
 @media screen and (max-width: 786px) {
 
-    /* index.html의 main과 aside를 세로 1열로 배치 */
-    .content-layout {
-        flex-direction: column;
+    .signup-container,
+    .signup-result-container {
+        width: calc(100% - 20px);
+
+        padding: 18px 0 35px;
     }
 
-    main,
-    aside {
-        width: 100%;
-        box-sizing: border-box;
+
+    .signup-header {
+        gap: 14px;
+
+        padding: 21px;
     }
 
-    /* index.html의 바로가기를 세로 1열로 배치 */
-    .shortcut-list {
-        flex-direction: column;
+
+    .signup-header h1 {
+        font-size: clamp(27px, 7vw, 34px);
     }
 
-    .shortcut-list li {
-        width: 100%;
+
+    .signup-header-icon {
+        width: 65px;
+        height: 65px;
+
+        border-radius: 19px;
+
+        font-size: 30px;
     }
 
-    .shortcut-list a {
-        box-sizing: border-box;
-        width: 100%;
+
+    .signup-fieldset,
+    .signup-result-card {
+        padding: 19px 15px;
     }
 
-    /* myTrip.html의 여행 카드들을 1열로 배치 */
-    .trip-grid {
+
+    .signup-field-grid {
         grid-template-columns: 1fr;
     }
-}
 
-/* =========================
-   11. 마우스 반응과 애니메이션
-========================= */
 
-/* 바로가기 메뉴 */
-.shortcut-list a {
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.shortcut-list a:hover {
-    background-color: #8b65bc;
-    color: #ffffff;
-    text-decoration: none;
-}
-
-/* 회원가입 버튼 */
-input[type="submit"],
-input[type="reset"] {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-family: "Poor Story", cursive;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-input[type="submit"] {
-    background-color: #8b65bc;
-    color: #ffffff;
-}
-
-input[type="reset"] {
-    background-color: #eee8f5;
-    color: #4a4453;
-}
-
-input[type="submit"]:hover {
-    background-color: #65458e;
-}
-
-input[type="reset"]:hover {
-    background-color: #d8c6ef;
-}
-
-/* 여행 카드 */
-.trip-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* 메인 제목 등장 애니메이션 */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
+    .signup-field-full {
+        grid-column: auto;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-.main-title {
-    animation: fadeIn 1s ease-out;
+    .email-input-group {
+        grid-template-columns: 1fr auto;
+    }
+
+
+    .email-input-group select {
+        grid-column: 1 / -1;
+    }
+
+
+    .gender-choice-grid,
+    .interest-choice-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .signup-button-group {
+        flex-direction: column-reverse;
+    }
+
+
+    .signup-button {
+        width: 100%;
+    }
+
+
+    .signup-success-card {
+        padding: 40px 18px;
+    }
+
+
+    .success-decoration {
+        font-size: 24px;
+    }
+
+
+    .signup-result-links {
+        grid-template-columns: 1fr;
+    }
+
 }
 
 

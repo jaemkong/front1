@@ -1,46 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 성공</title>
+
+    <title>회원가입 완료</title>
 
     <!-- 공통 CSS 연결 -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
-    <div class="container">
-        <h1>🎉회원가입을 진심으로 축하합니다!</h1>
+<body class="signup-result-page">
 
-        <p><strong>SKALA-FRONT</strong> 회원이 되신 것을 환영합니다.</p>
+    <main class="signup-result-container">
 
-        <hr>
+        <!-- 메인페이지로 돌아가기 -->
+        <a href="index.html" class="back-home">
+            ← 메인페이지로 돌아가기
+        </a>
 
-        <h2>안내 사항</h2>
+        <!-- ======================================
+             가입 완료 카드
+        ======================================= -->
+        <section class="signup-success-card">
 
-        <ul>
-            <li>입력하신 이메일 주소로 가입 확인 메일이 발송되었습니다.</li>
-            <li>보안을 위해 첫 로그인 후 비밀번호를 다시 한번 확인해 주세요.</li>
-            <li>작성하신 프로필 정보는 마이페이지에서 언제든지 수정이 가능합니다.</li>
-        </ul>
+            <div class="success-decoration success-decoration-left">
+                ✨
+            </div>
 
-        <br>
+            <div class="success-decoration success-decoration-right">
+                🎊
+            </div>
 
-        <h2>이동하기</h2>
+            <div class="success-icon">
+                🎉
+            </div>
 
-        <p>아래 링크를 클릭하면 이전에 작성한 다른 페이지로 이동할 수 있습니다.</p>
+            <p class="success-kicker">
+                WELCOME TO MY UNIVERSE
+            </p>
 
-        <ul style="list-style-type:disc;">
-            <li><a href="index.html">🙆🏻‍♀️ 나의 프로필 보기</a></li>
-            <br>
-            <li><a href="myProfile.html">🏫 나의 수업 시간표 보기</a></li>
-            <br>
-            <li><a href="myHoliday.html">📝 나의 휴일 계획 보기</a></li>
-        </ul>
-    </div>
+            <h1>
+                회원가입이 완료되었습니다!
+            </h1>
 
+            <p class="success-description">
+                <strong>SKALA-FRONT</strong> 회원이 되신 것을 환영합니다.<br>
+                재은이의 유니버스에 함께해 주셔서 감사해요.
+            </p>
+
+            <div class="success-check">
+                ✓ 가입 완료
+            </div>
+
+        </section>
+
+        <!-- ======================================
+             안내 사항
+        ======================================= -->
+        <section class="signup-result-card">
+
+            <div class="result-section-heading">
+
+                <div>
+                    <p class="result-kicker">
+                        INFORMATION
+                    </p>
+
+                    <h2>
+                        안내 사항
+                    </h2>
+                </div>
+
+                <span class="result-heading-icon">
+                    📮
+                </span>
+
+            </div>
+
+            <ul class="signup-guide-list">
+
+                <li>
+                    <span>💌</span>
+
+                    <div>
+                        <strong>가입 확인 안내</strong>
+
+                        <p>
+                            입력하신 이메일 주소로 가입 확인 메일이 발송되었습니다.
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <span>🔐</span>
+
+                    <div>
+                        <strong>비밀번호 보안</strong>
+
+                        <p>
+                            보안을 위해 첫 로그인 후 비밀번호를 다시 확인해 주세요.
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <span>📝</span>
+
+                    <div>
+                        <strong>프로필 수정</strong>
+
+                        <p>
+                            작성한 프로필 정보는 마이페이지에서 언제든지 수정할 수 있습니다.
+                        </p>
+                    </div>
+                </li>
+
+            </ul>
+
+        </section>
+
+        <!-- ======================================
+             다른 페이지로 이동
+        ======================================= -->
+        <section class="signup-result-card">
+
+            <div class="result-section-heading">
+
+                <div>
+                    <p class="result-kicker">
+                        QUICK LINKS
+                    </p>
+
+                    <h2>
+                        다른 페이지 둘러보기
+                    </h2>
+                </div>
+
+                <span class="result-heading-icon">
+                    🧭
+                </span>
+
+            </div>
+
+            <p class="result-guide">
+                아래 카드를 선택하면 재은이의 다른 페이지로 이동할 수 있어요.
+            </p>
+
+            <nav class="signup-result-links" aria-label="다른 페이지 이동">
+
+                <a href="index.html">
+
+                    <span class="result-link-icon">
+                        🏠
+                    </span>
+
+                    <span>
+                        <strong>메인페이지</strong>
+                        <small>재은이의 유니버스 홈</small>
+                    </span>
+
+                    <span class="result-link-arrow">
+                        →
+                    </span>
+
+                </a>
+
+                <a href="myProfile.html">
+
+                    <span class="result-link-icon">
+                        🙆🏻‍♀️
+                    </span>
+
+                    <span>
+                        <strong>나의 프로필</strong>
+                        <small>좋아하는 것과 목표 소개</small>
+                    </span>
+
+                    <span class="result-link-arrow">
+                        →
+                    </span>
+
+                </a>
+
+                <a href="myClass.html">
+
+                    <span class="result-link-icon">
+                        📚
+                    </span>
+
+                    <span>
+                        <strong>나의 수업</strong>
+                        <small>주간 강의 시간표 보기</small>
+                    </span>
+
+                    <span class="result-link-arrow">
+                        →
+                    </span>
+
+                </a>
+
+                <a href="myHoliday.html">
+
+                    <span class="result-link-icon">
+                        🛋️
+                    </span>
+
+                    <span>
+                        <strong>나의 휴일</strong>
+                        <small>휴일 일과와 계획 보기</small>
+                    </span>
+
+                    <span class="result-link-arrow">
+                        →
+                    </span>
+
+                </a>
+
+                <a href="myTrip.html">
+
+                    <span class="result-link-icon">
+                        ✈️
+                    </span>
+
+                    <span>
+                        <strong>나의 여행</strong>
+                        <small>사진과 영상으로 보는 여행 기록</small>
+                    </span>
+
+                    <span class="result-link-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </nav>
+
+        </section>
+
+        <p class="signup-result-message">
+            오늘도 재은이의 유니버스에서 즐거운 시간 보내세요 💜
+        </p>
+
+    </main>
 
 </body>
 

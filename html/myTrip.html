@@ -3,47 +3,391 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나의 캐나다 여행</title>
+
+    <title>나의 여행 기록</title>
 
     <!-- 공통 CSS 연결 -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
-    <div class="container">
-        <h1>🍁 나의 캐나다 여행 앨범 🎵</h1>
+<body class="trip-page">
 
-        <audio controls>
-            <source src="media/canada.mp3" type="audio/mpeg">
-        </audio>
+    <main class="trip-container">
 
-        <hr>
+        <!-- 메인페이지로 돌아가기 -->
+        <a href="index.html" class="back-home">
+            ← 메인페이지로 돌아가기
+        </a>
 
-        <div class="trip-grid">
-            <p class="trip-card">
-                <img src="media/banff.jpg" alt="밴프 국립공원의 호수와 로키산맥">
-                <br>
-                <span>밴프 국립공원 - 청록빛 호수와 로키산맥</span>
+        <!-- ======================================
+             여행 페이지 상단
+        ======================================= -->
+        <header class="trip-header">
+
+            <div class="trip-header-text">
+
+                <p class="trip-kicker">
+                    MY TRAVEL DIARY
+                </p>
+
+                <h1>
+                    ✈️ 나의 여행 기록
+                </h1>
+
+                <p class="trip-description">
+                    다녀온 여행지의 사진과 음악, 영상을 모아두는
+                    재은이의 여행 기록 페이지입니다.
+                </p>
+
+            </div>
+
+            <div class="trip-header-icon">
+                🧳
+            </div>
+
+        </header>
+
+        <!-- ======================================
+             여행 요약
+        ======================================= -->
+        <section class="trip-summary" aria-label="여행 기록 요약">
+
+            <article class="trip-summary-item">
+
+                <span class="trip-summary-icon">
+                    🌎
+                </span>
+
+                <div>
+                    <strong>첫 번째 여행</strong>
+                    <p>캐나다</p>
+                </div>
+
+            </article>
+
+            <article class="trip-summary-item">
+
+                <span class="trip-summary-icon">
+                    📸
+                </span>
+
+                <div>
+                    <strong>여행 사진</strong>
+                    <p>밴프 · 나이아가라 · 밴쿠버</p>
+                </div>
+
+            </article>
+
+            <article class="trip-summary-item">
+
+                <span class="trip-summary-icon">
+                    🎬
+                </span>
+
+                <div>
+                    <strong>기록 방식</strong>
+                    <p>사진 · 음악 · 영상</p>
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- ======================================
+             캐나다 여행 기록
+        ======================================= -->
+        <section class="travel-entry">
+
+            <!-- 여행 제목 -->
+            <div class="travel-entry-heading">
+
+                <div>
+
+                    <p class="trip-kicker">
+                        CANADA · TRAVEL RECORD
+                    </p>
+
+                    <h2>
+                        🍁 캐나다 여행
+                    </h2>
+
+                </div>
+
+                <span class="trip-sticker">
+                    FIRST TRIP ✨
+                </span>
+
+            </div>
+
+            <p class="travel-entry-description">
+                밴프의 자연과 나이아가라 폭포,
+                밴쿠버의 야경까지 담아둔 여행 기록입니다.
             </p>
 
-            <p class="trip-card">
-                <img src="media/niagara.jpeg" alt="나이아가라 폭포">
-                <br>
-                <span>나이아가라 폭포 - 웅장한 물줄기와 시원한 물안개</span>
-            </p>
+            <!-- ==================================
+                 여행 음악
+            =================================== -->
+            <section class="trip-audio-card">
 
-            <p class="trip-card">
-                <img src="media/vancouver.jpeg" alt="밴쿠버 야경">
-                <br>
-                <span>밴쿠버 - 바다와 도시가 함께 빛나는 야경</span>
-            </p>
-        </div>
+                <div class="trip-media-heading">
 
+                    <span class="trip-media-icon">
+                        🎧
+                    </span>
 
+                    <div>
+                        <strong>캐나다 여행 음악</strong>
 
-        </p>
-    </div>
+                        <p>
+                            여행 사진을 보면서 음악도 함께 들어보세요.
+                        </p>
+                    </div>
+
+                </div>
+
+                <audio controls preload="metadata">
+
+                    <source src="media/canada.mp3" type="audio/mpeg">
+
+                    현재 브라우저에서는 오디오를 재생할 수 없습니다.
+
+                </audio>
+
+            </section>
+
+            <!-- ==================================
+                 여행 사진
+            =================================== -->
+            <section class="trip-photo-section">
+
+                <div class="trip-sub-heading">
+
+                    <div>
+
+                        <p class="trip-kicker">
+                            TRAVEL PHOTOS
+                        </p>
+
+                        <h3>
+                            여행 사진
+                        </h3>
+
+                    </div>
+
+                    <p>
+                        사진을 누르면 크게 볼 수 있어요.
+                    </p>
+
+                </div>
+
+                <div class="trip-photo-grid">
+
+                    <!-- 밴프 -->
+                    <figure class="travel-photo-card" data-image="media/banff.jpg" data-alt="밴프 국립공원의 청록빛 호수와 로키산맥">
+
+                        <div class="travel-photo-wrap">
+
+                            <img src="media/banff.jpg" alt="밴프 국립공원의 청록빛 호수와 로키산맥">
+
+                            <span class="travel-location">
+                                BANFF
+                            </span>
+
+                        </div>
+
+                        <figcaption>
+
+                            <span class="travel-photo-icon">
+                                🏔️
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    밴프 국립공원
+                                </strong>
+
+                                <p>
+                                    청록빛 호수와 로키산맥이
+                                    어우러진 아름다운 풍경
+                                </p>
+
+                            </div>
+
+                        </figcaption>
+
+                    </figure>
+
+                    <!-- 나이아가라 -->
+                    <figure class="travel-photo-card" data-image="media/niagara.jpeg" data-alt="웅장한 나이아가라 폭포와 유람선">
+
+                        <div class="travel-photo-wrap">
+
+                            <img src="media/niagara.jpeg" alt="웅장한 나이아가라 폭포와 유람선">
+
+                            <span class="travel-location">
+                                NIAGARA
+                            </span>
+
+                        </div>
+
+                        <figcaption>
+
+                            <span class="travel-photo-icon">
+                                🌈
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    나이아가라 폭포
+                                </strong>
+
+                                <p>
+                                    웅장한 물줄기와 시원한 물안개,
+                                    폭포 위에 나타난 무지개
+                                </p>
+
+                            </div>
+
+                        </figcaption>
+
+                    </figure>
+
+                    <!-- 밴쿠버 -->
+                    <figure class="travel-photo-card" data-image="media/vancouver.jpeg" data-alt="밴쿠버 항구와 도시의 야경">
+
+                        <div class="travel-photo-wrap">
+
+                            <img src="media/vancouver.jpeg" alt="밴쿠버 항구와 도시의 야경">
+
+                            <span class="travel-location">
+                                VANCOUVER
+                            </span>
+
+                        </div>
+
+                        <figcaption>
+
+                            <span class="travel-photo-icon">
+                                🌃
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    밴쿠버 야경
+                                </strong>
+
+                                <p>
+                                    바다와 항구, 도시의 불빛이
+                                    함께 빛나는 아름다운 밤
+                                </p>
+
+                            </div>
+
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+            </section>
+
+            <!-- ==================================
+                 여행 영상
+            =================================== -->
+            <section class="trip-video-section">
+
+                <div class="trip-sub-heading">
+
+                    <div>
+
+                        <p class="trip-kicker">
+                            TRAVEL VIDEO
+                        </p>
+
+                        <h3>
+                            여행 영상
+                        </h3>
+
+                    </div>
+
+                    <span class="trip-video-badge">
+                        🎬 PLAY
+                    </span>
+
+                </div>
+
+                <p class="trip-video-description">
+                    사진에 모두 담지 못한 여행의 순간을
+                    영상으로 다시 감상해보세요.
+                </p>
+
+                <div class="trip-video-frame">
+
+                    <video controls preload="metadata">
+
+                        <source src="media/canada.mp4" type="video/mp4">
+
+                        현재 브라우저에서는 영상을 재생할 수 없습니다.
+
+                    </video>
+
+                </div>
+
+                <!-- 영상 아래 한 줄 소개 -->
+                <p class="trip-video-caption">
+                    🐟 캐나다에서 먹은 줄돔
+                </p>
+
+            </section>
+
+            <!-- ==================================
+                 여행 기록 마무리
+            =================================== -->
+            <div class="trip-message">
+
+                <span class="trip-message-icon">
+                    🍁
+                </span>
+
+                <div>
+
+                    <strong>
+                        사진을 보면 그날의 순간이 다시 떠오르는 것 같아요.
+                    </strong>
+
+                    <p>
+                        앞으로 새로운 여행 기록도 하나씩 추가할 예정입니다.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ======================================
+         사진 크게 보기
+    ======================================= -->
+    <dialog class="photo-viewer" id="photoViewer">
+
+        <button type="button" class="photo-viewer-close" id="photoViewerClose" aria-label="사진 닫기">
+            ×
+        </button>
+
+        <img src="" alt="" id="photoViewerImage">
+
+    </dialog>
+
+    <!-- 여행 사진 JavaScript 연결 -->
+    <script src="../script/tripGallery.js"></script>
+
 </body>
 
 </html>
